@@ -1,0 +1,4 @@
+sceneSetups:
+- path: Assets/RealSenseSDK2.0/Scenes/Camera_and_Avatar.unity
+  isLoaded: 1
+  isActive: 1
