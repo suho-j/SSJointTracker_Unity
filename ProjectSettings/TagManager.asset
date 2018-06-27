@@ -5,7 +5,6 @@ TagManager:
   serializedVersion: 2
   tags:
   - Right Arm
-  - Right Fore Arm
   - Left Arm
   - Left Fore Arm
   - Head
@@ -20,6 +19,8 @@ TagManager:
   - Left Foot
   - Spine
   - All
+  - PANEL
+  - Right Fore Arm
   layers:
   - Default
   - TransparentFX

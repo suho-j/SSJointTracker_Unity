@@ -17,38 +17,6 @@ public class Rotation : MonoBehaviour {
     private void Awake()
     {
         dt = mysqlDB.selsql("SELECT * FROM relbow_angle2");
-        
-        //NECK.transform.rotation = Quaternion.Euler(0,0,-(float)(dt.Rows[5].ItemArray[2]));
-        //RSHOULDER.transform.rotation.eulerAngles
-
-
-        //RSHOULDER.transform.position = new Vector3((float)-0.0554+(float)(dt.Rows[2].ItemArray[1]),(float)-4.7463+(float)(dt.Rows[2].ItemArray[9]),(float)-9.9602+(float)(dt.Rows[2].ItemArray[10]));///121
-        //RELBOW.transform.rotation = Quaternion.Euler((float)dt.Rows[2].ItemArray[3], (float)dt.Rows[2].ItemArray[2], (float)(dt.Rows[2].ItemArray[1]));//166
-        //RWRIST.transform.position = new Vector3((float)-0.1624+(float)(dt.Rows[2].ItemArray[3]),(float)-6.6064+(float)(dt.Rows[2].ItemArray[15]),(float)1.72681+(float)(dt.Rows[2].ItemArray[16]));///121
-
-        //for (int i = 0; i < 40; i++)
-        //{
-        //    RELBOW.transform.rotation = Quaternion.Euler((float)(dt.Rows[i].ItemArray[1]), (float)(dt.Rows[i].ItemArray[2]), (float)(dt.Rows[i].ItemArray[3]));
-        //    Debug.Log(dt.Rows[i].ItemArray[1]);
-        //    Debug.Log(dt.Rows[i].ItemArray[2]);
-        //    Debug.Log(dt.Rows[i].ItemArray[3]);
-        //}
-
-
-        //RSHOULDER.transform.rotation = Quaternion.Euler(0,0,(float)(dt.Rows[5].ItemArray[3]));///121
-        //RELBOW.transform.rotation = Quaternion.Euler((float)dt.Rows[2].ItemArray[3],(float)dt.Rows[2].ItemArray[2],(float)(dt.Rows[2].ItemArray[1]));//166
-        //LSHOULDER.transform.rotation = Quaternion.Euler(0,0,(float)(dt.Rows[5].ItemArray[5]));//126
-        //LELBOW.transform.rotation = Quaternion.Euler(0,0,(float)(dt.Rows[5].ItemArray[6]));//173
-
-        /*
-		for (int i = 0; i < 12 ; i++) {
-			Debug.Log (dt.Rows[0].ItemArray[i]); // first pose in first row
-			//dt.Rows[0].ItemArray[3]
-		}*/
-
-        
-        
-
     
     }
     IEnumerator Sleep(float time)
@@ -69,24 +37,12 @@ public class Rotation : MonoBehaviour {
         {
             //Debug.Log(i);
             Wait();
-            RELBOW.transform.rotation = Quaternion.Euler((float)(dt.Rows[i].ItemArray[2]), (float)(dt.Rows[i].ItemArray[2])*(-1)+270, (float)(dt.Rows[i].ItemArray[3])*(-1)+180);
-            //Debug.Log(dt.Rows[i].ItemArray[1]);
-            //Debug.Log(dt.Rows[i].ItemArray[2]);
-            //Debug.Log(dt.Rows[i].ItemArray[3]);
+            RELBOW.transform.localRotation = Quaternion.Euler((float)0.01f, (float)(dt.Rows[i].ItemArray[2]), (float)(dt.Rows[i].ItemArray[3]));
+            //RELBOW.transform.localRotation = Quaternion.Euler((float)0.01f, (float)(dt.Rows[i].ItemArray[3]), (float)(dt.Rows[i].ItemArray[4]));
+            //LSHOULDER.transform.localRotation = Quaternion.Euler((float)0.01f, (float)(dt.Rows[i].ItemArray[5]), (float)(dt.Rows[i].ItemArray[6]));
+            //LELBOW.transform.localRotation = Quaternion.Euler((float)0.01f, (float)(dt.Rows[i].ItemArray[7]), (float)(dt.Rows[i].ItemArray[8]));
             i++;
-            //if (i > dt.Rows) i = 0;
 
-            //RElbow_called();
-            FPS = (int)(1f / Time.deltaTime); //1초당 프레임
-                                              // dt.Rows[0].ItemArray[3]
-                                              // 각도 구하기, x: 앞뒤, y: 제자리회전, z: 좌우
-
-
-            //RELBOW.transform.rotation = Quaternion.Euler((float)dt.Rows[2].ItemArray[3], (float)dt.Rows[2].ItemArray[2], (float)(dt.Rows[2].ItemArray[1]));//166
-            //LELBOW.transform.rotation = Quaternion.Euler(0,90,-90); //팔직각
-
-            //RHIP.transform.rotation = Quaternion.Euler(0,0,0);
-            //LHIP.transform.rotation = Quaternion.Euler(0,0,0);
         }
         catch
         {

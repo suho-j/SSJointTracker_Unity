@@ -38,10 +38,10 @@ public class Position : MonoBehaviour {
 
         All = GameObject.FindWithTag("All");
 
-        rotation.eulerAngles = new Vector3(0, 0.0f, 0.0f);
+        //rotation.eulerAngles = new Vector3(0, 0.0f, 0.0f);
         //rotation_init.eulerAngles = new Vector3(0, 0, 0);
         //RightForeArmMotion.transform.rotation = Quaternion.identity;
-        All.transform.rotation = rotation;
+        //All.transform.rotation = rotation;
     }
 
     // Update is called once per frame
@@ -60,7 +60,7 @@ public class Position : MonoBehaviour {
 
         // 계속회전
         //x += Time.deltaTime * 10;
-        //RightForeArmMotion.transform.rotation = Quaternion.Euler(x, 0, 0);
+        RightForeArmMotion.transform.localRotation = Quaternion.Euler(45f, 45f, 0);
         //RightForeArmMotion.transform.rotation *= rotation_init;
         //RightForeArmMotion.transform.rotation *= rotation;
 

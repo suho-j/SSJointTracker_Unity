@@ -75,12 +75,16 @@
     <Compile Include="Assets\Rotation.cs" />
     <Compile Include="Assets\RotationFrom_RightShoulder.cs" />
     <Compile Include="Assets\sc.cs" />
+    <Compile Include="Assets\Server.cs" />
+    <Compile Include="Assets\serverYZ.cs" />
     <Compile Include="Assets\UnityChan\Scripts\CameraController.cs" />
     <Compile Include="Assets\UnityChan\Scripts\FaceUpdate.cs" />
     <Compile Include="Assets\UnityChan\Scripts\IdleChanger.cs" />
     <Compile Include="Assets\UnityChan\Scripts\SceneLoader.cs" />
     <Compile Include="Assets\UnityChan\Scripts\ThirdPersonCamera.cs" />
     <Compile Include="Assets\UnityChan\Scripts\UnityChanControlScriptWithRgidBody.cs" />
+    <Compile Include="Assets\upperbody.cs" />
+    <Compile Include="Assets\Upperbody_socket.cs" />
     <None Include="Assets\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_eye.shader" />
     <None Include="Assets\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_fuku.shader" />
     <None Include="Assets\RealSenseSDK2.0\Shaders\Depth.shader" />
