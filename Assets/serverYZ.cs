@@ -11,7 +11,7 @@ public class serverYZ : MonoBehaviour
 {
     //width x height x RGB(3) = 921600, 임의 할당
     byte[] readBuffer = new byte[921600];
-    byte[] readBuffer2 = new byte[100];
+    byte[] readBuffer2 = new byte[12];
 
     TcpListener server;
 
@@ -78,23 +78,29 @@ public class serverYZ : MonoBehaviour
         stream = client.GetStream();
         //readbuffer, byteRead: 전달받은 byte length
         byteRead = stream.Read(readBuffer2, 0, readBuffer2.Length);
-
+        //int[] byteasint = Array.ConvertAll(readBuffer2, c => (int)c);
+        
+        int[] byteasint = ByteToIntArray(readBuffer2);
+        
+        Debug.Log("byteasint: " + byteasint[0]);
+        Debug.Log("byteasint: " + byteasint[1]);
+        Debug.Log("byteasint: " + byteasint[2]);
         msg = ByteToString(readBuffer2);
         int s = 0;
         int s2 = 0;
         //s = BitConverter.ToInt16(readBuffer2, 0);
-        Debug.Log(msg);
+        Debug.Log("msg:" + msg);
         int.TryParse(msg, out s);
-        Debug.Log(s);
-        RELBOW.transform.localRotation = Quaternion.Euler((float)0.01f, (float)(s), (float)(s2));
+        Debug.Log("s:"+s);
+        //RELBOW.transform.localRotation = Quaternion.Euler((float)0.01f, (float)(s), (float)(s2));
         //string[] split_text = new string[2];
         //split_text = msg.Split('_');
         //Debug.Log(split_text[0]);
         //Debug.Log(split_text[1]);
         //Debug.Log(split_text[2]);
 
-        msg = Encoding.ASCII.GetString(readBuffer2, 0, byteRead);
-        Debug.Log(msg);
+        //msg = Encoding.ASCII.GetString(readBuffer2, 0, byteRead);
+        //Debug.Log("msg"+msg);
         i++;
         //메시지 전달
         stream.Write(readBuffer2, 0, byteRead);
@@ -104,7 +110,17 @@ public class serverYZ : MonoBehaviour
         server.Stop();
         return readBuffer2;
     }
-
+    int[] ByteToIntArray(byte[] byteInt)
+    {
+        int size = byteInt.Length / sizeof(int);
+        int[] byteToInt = new int[size];
+        for(int index = 0; index < size; index++)
+        {
+            byteToInt[index] = BitConverter.ToInt32(readBuffer2, index * sizeof(int));
+        }
+        return byteToInt;
+    }
+    
     string ByteToString(byte[] strByte)
     {
         string str = Encoding.ASCII.GetString(strByte);
@@ -147,7 +163,7 @@ public class serverYZ : MonoBehaviour
         string text2;
         string[] split_text = new string[2];
         byte[] by;
-        TCPListen();
+        readBuffer2 = TCPListen();
         //readBuffer - 전역변수, 데이터가 있을경우만 ShowCam을 호출
 
         //text = ','+999.ToString()+','+999.ToString();
@@ -160,7 +176,7 @@ public class serverYZ : MonoBehaviour
         //Debug.Log(split_text[0]);
         //Debug.Log(split_text[1]);
         //Debug.Log(split_text[2]);
-        if (readBuffer != null)
+        if (readBuffer2 != null)
         {
             text = ByteToString(readBuffer2);
             Debug.Log(text);
@@ -174,10 +190,10 @@ public class serverYZ : MonoBehaviour
             Debug.Log(ss);
             int sss;
             int.TryParse(split_text[1], out sss);
-            Debug.Log(sss);
+            Debug.Log("sss:"+sss);
             int ssss;
             int.TryParse(split_text[2], out ssss);
-            Debug.Log(ssss);
+            Debug.Log("ssss:"+ssss);
             //Debug.Log(split_text[0]);
             //Debug.Log(split_text[1]);
             //Debug.Log(split_text[2]);
